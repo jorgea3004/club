@@ -17,6 +17,13 @@ class MembersController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nombre' => 'required|max:45',
+            'lastname' => 'required|max:45',
+            'telef' => 'required|max:15',
+            'fecnac' => 'required|max:10',
+            'idcity' => 'required|max:2'
+        ]);
         $member = new Members();
         $member->name = $request->nombre;
         $member->last_name = $request->lastname;
